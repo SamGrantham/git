@@ -1115,16 +1115,15 @@ static CURL *get_curl_handle(void)
 		ssl_cipherlist = getenv("GIT_SSL_CIPHER_LIST");
 	if (ssl_cipherlist != NULL && *ssl_cipherlist)
 	{
-		fprintf("sslversions amount: %s", (ARRAY_SIZE(sslversions)).tostring());
-		fprintf("sslversion: %s", sslversions[0].name);
+		printf("sslversion: %s \n", sslversions[0].name);
 		if ((ARRAY_SIZE(sslversions) == 1) && (strcmp("tlsv1.3", sslversions[0].name)))
 		{	
-			fprintf("ssl_cipherlist: %s", ssl_cipherlist);
+			printf("ssl_cipherlist: %s \n", ssl_cipherlist);
 			curl_easy_setopt(result, CURLOPT_TLS13_CIPHERS,	ssl_cipherlist);
 		}
 		else
 		{	
-			fprintf("ssl_cipherlist: %s", ssl_cipherlist);
+			printf("ssl_cipherlist: %s \n", ssl_cipherlist);
 			curl_easy_setopt(result, CURLOPT_SSL_CIPHER_LIST, ssl_cipherlist);
 		}
 	}
